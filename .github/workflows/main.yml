@@ -18,11 +18,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          # Remove cache setting since no lock file exists
 
       - name: Install dependencies
-        run: 
-         git clone https://github.com/mrjnub/Knightbot-MD
-         cd Knightbot-MD
-         npm install
-         npm start
+        run: npm install --no-package-lock --no-audit
+
+      - name: Start application
+        run: npm start
